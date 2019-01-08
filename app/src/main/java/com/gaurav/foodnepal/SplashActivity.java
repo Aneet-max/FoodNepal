@@ -1,25 +1,22 @@
 package com.gaurav.foodnepal;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private RelativeLayout splashRL;
-
     private final int interval = 4000; // 4 Second
+    private RelativeLayout splashRL;
     private Handler handler = new Handler();
-    private Runnable runnable = new Runnable(){
+    private Runnable runnable = new Runnable() {
         public void run() {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            Intent intent = new Intent(SplashActivity.this, Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     };
@@ -34,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         splashRL.startAnimation(popUp);
 
 
-        handler.postAtTime(runnable, System.currentTimeMillis()+interval);
+        handler.postAtTime(runnable, System.currentTimeMillis() + interval);
         handler.postDelayed(runnable, interval);
     }
 }

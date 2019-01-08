@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
-
+    android:background="@android:color/background_dark"
     android:orientation="vertical"
     tools:context="com.gaurav.foodnepal.MainActivity">
 
@@ -27,15 +26,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/phone"
-            android:drawableLeft="@drawable/phone"
+            android:drawableStart="@android:drawable/stat_sys_phone_call"
+            android:drawableLeft="@android:drawable/stat_sys_phone_call"
             android:drawablePadding="12dp"
             android:ems="10"
-            android:hint="@string/Phone"
+            android:hint="@string/phone"
             android:inputType="phone"
             android:maxLines="1"
             android:padding="8dp"
-
+android:textColor="@android:color/white"
             android:textColorHint="#FFF" />
 
         <View
@@ -49,14 +48,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_lock_black_24dp"
-            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawableStart="@android:drawable/ic_lock_idle_lock"
+            android:drawableLeft="@android:drawable/ic_lock_idle_lock"
             android:drawablePadding="12dp"
             android:ems="10"
             android:hint="@string/hintpassword"
             android:inputType="textPassword"
             android:maxLines="1"
             android:padding="8dp"
+            android:textColor="@android:color/white"
             android:textColorHint="#FFF" />
 
 
@@ -84,12 +84,10 @@
             android:layout_height="wrap_content"
 
             android:layout_marginTop="70dp"
-            android:background="@drawable/background_login"
             android:clickable="true"
             android:padding="16dp"
             android:text="@string/login"
             android:textAllCaps="false"
-            android:textColor="@color/startRed"
             android:textSize="18sp" />
 
         <Button
@@ -97,23 +95,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/background_signup"
             android:clickable="true"
             android:padding="16dp"
             android:text="@string/signup"
             android:textAllCaps="false"
-            android:textColor="#FFF"
+
             android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
-            android:padding="16dp"
-            android:text="@string/forget"
-            android:textColor="#FFF"
-            android:textSize="16sp" />
 
     </LinearLayout>
 
