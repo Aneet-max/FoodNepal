@@ -12,7 +12,7 @@
     <string name="login_auto">Login Automatically</string>
     <string name="signup">Sign Up</string>
     <string name="forget">Forget Password</string>
-    <string name="title_location_permission">We need location permission to show best restutran around you</string>
+    <string name="title_location_permission">We need location permission to show best restaurant around you</string>
     <string name="text_location_permission">Same as title</string>
     <string name="ok">Ok</string>
 </resources>
