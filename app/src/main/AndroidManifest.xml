@@ -35,6 +35,7 @@
             android:name=".Login"
             android:label="@string/login"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Khalti" />
     </application>
 
 </manifest>
