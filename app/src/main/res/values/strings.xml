@@ -2,8 +2,8 @@
     <string name="app_name">Food Nepal</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Food Nepal</string>
+    <string name="nav_header_subtitle">foodnepal@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="login">Login</string>
@@ -11,7 +11,6 @@
     <string name="hintpassword">Password</string>
     <string name="login_auto">Login Automatically</string>
     <string name="signup">Sign Up</string>
-    <string name="forget">Forget Password</string>
     <string name="title_location_permission">We need location permission to show best restaurant around you</string>
     <string name="text_location_permission">Same as title</string>
     <string name="ok">Ok</string>
