@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-    </group>
+    <group android:checkableBehavior="single"></group>
 
     <item android:title="Support Us">
         <menu>

@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
     android:gravity="center"
-    android:padding="8dp"
     android:orientation="vertical"
+    android:padding="8dp"
     tools:context="com.gaurav.foodnepal.MainActivity">
 
 
@@ -22,21 +22,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:drawableStart="@android:drawable/stat_sys_phone_call"
-        android:drawableLeft="@android:drawable/stat_sys_phone_call"
+        android:drawableStart="@drawable/ic_phone"
+        android:drawableLeft="@drawable/ic_phone"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="@string/phone"
         android:inputType="phone"
         android:maxLines="1"
         android:padding="8dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="#FFF" />
+        android:textColor="@color/colorGold"
+        android:textColorHint="@color/colorGold" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFF" />
+        android:background="@color/colorGold" />
 
     <EditText
         android:id="@+id/edtPassword"
@@ -44,22 +44,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
-        android:drawableStart="@android:drawable/ic_lock_idle_lock"
-        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:drawableStart="@drawable/ic_password"
+        android:drawableLeft="@drawable/ic_password"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="@string/hintpassword"
         android:inputType="textPassword"
         android:maxLines="1"
         android:padding="8dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="#FFF" />
+        android:textColor="@color/colorGold"
+        android:textColorHint="@color/colorGold" />
 
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFF" />
+        android:background="@color/colorGold" />
 
     <Button
         android:id="@+id/btnSignIn"
@@ -70,6 +70,7 @@
         android:clickable="true"
         android:padding="16dp"
         android:text="@string/login"
+        android:background="@color/colorGold"
         android:textAllCaps="false"
         android:textSize="18sp" />
 
@@ -78,6 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@color/colorGold"
         android:clickable="true"
         android:padding="16dp"
         android:text="@string/signup"
@@ -86,11 +88,11 @@
         android:textSize="18sp" />
 
     <TextView
-        android:padding="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:text="@string/forgot"/>
+        android:padding="16dp"
+        android:text="@string/forgot"
+        android:textColor="@color/colorGold" />
 
 
 </LinearLayout>

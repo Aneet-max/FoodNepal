@@ -29,7 +29,7 @@ public class Khalti extends AppCompatActivity {
 
             @Override
             public void onSuccess(HashMap<String, Object> data) {
-                Log.i("Payment confirmed", data+" ");
+                Log.i("Payment confirmed", data + " ");
             }
 
             @Override

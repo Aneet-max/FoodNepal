@@ -35,12 +35,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-    private GoogleMap mMap;
-    private SupportMapFragment mapFragment;
     double longitude = 0;
     double latitude = 0;
+    private GoogleMap mMap;
+    private SupportMapFragment mapFragment;
     private FusedLocationProviderClient mFusedLocationClient;
     private LatLng latLng;
+    private View view;
 
 
     @Override
@@ -53,12 +54,14 @@ public class MainActivity extends AppCompatActivity
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        view = findViewById(R.id.map);
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace by your own action", Snackbar.LENGTH_SHORT).show();
+                fetchAndShowLocation(mMap);
             }
         });
 
@@ -128,6 +131,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        fetchAndShowLocation(googleMap);
+    }
+
+    private void fetchAndShowLocation(GoogleMap googleMap) {
         mMap = googleMap;
 
 
@@ -146,7 +153,6 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
-                        Log.i("TAG", "onSuccess: location: " + location.toString());
                         if (location != null) {
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
@@ -154,10 +160,11 @@ public class MainActivity extends AppCompatActivity
                             Log.i("TAG", "onMapReady: latlng: " + latLng.toString());
                             float zoomLevel = 18.0f; //This goes up to 21
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
+                        } else {
+                            Snackbar.make(view, "Please enable location.", Snackbar.LENGTH_LONG).show();
                         }
                     }
                 });
-
 
     }
 
