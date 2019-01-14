@@ -28,7 +28,6 @@ public class Login extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
         btnSignUp = findViewById(R.id.btnSignUp);
-        saveLoginCheckBox = findViewById(R.id.checkbox1);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

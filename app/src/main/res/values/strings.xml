@@ -14,4 +14,5 @@
     <string name="title_location_permission">We need location permission to show best restaurant around you</string>
     <string name="text_location_permission">Same as title</string>
     <string name="ok">Ok</string>
+    <string name="forgot">Forgot password?</string>
 </resources>
