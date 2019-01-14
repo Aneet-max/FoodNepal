@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_donate) {
+        if (id == R.id.nav_contribute) {
             Intent intent = new Intent(MainActivity.this, Khalti.class);
             startActivity(intent);
         }

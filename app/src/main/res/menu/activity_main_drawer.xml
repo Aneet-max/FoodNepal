@@ -9,9 +9,9 @@
     <item android:title="Support Us">
         <menu>
             <item
-                android:id="@+id/nav_donate"
+                android:id="@+id/nav_contribute"
                 android:icon="@drawable/ic_currency_usd"
-                android:title="Donate" />
+                android:title="Contribute" />
         </menu>
     </item>
 
