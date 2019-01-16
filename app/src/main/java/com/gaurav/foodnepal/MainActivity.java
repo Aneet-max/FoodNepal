@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity
                             latLng = new LatLng(latitude, longitude);
                             Log.i("TAG", "onMapReady: latlng: " + latLng.toString());
                             float zoomLevel = 18.0f; //This goes up to 21
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
                         } else {
                             Snackbar.make(view, "Please enable location.", Snackbar.LENGTH_LONG).show();
                         }
