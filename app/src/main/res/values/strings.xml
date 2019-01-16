@@ -11,8 +11,8 @@
     <string name="hintpassword">Password</string>
     <string name="login_auto">Login Automatically</string>
     <string name="signup">Sign Up</string>
-    <string name="title_location_permission">We need location permission to show best restaurant around you</string>
-    <string name="text_location_permission">Same as title</string>
+    <string name="title_location_permission">Grant Location Access</string>
+    <string name="text_location_permission">We need location permission to show restaurants nearby you</string>
     <string name="ok">Ok</string>
     <string name="forgot">Forgot password?</string>
 </resources>

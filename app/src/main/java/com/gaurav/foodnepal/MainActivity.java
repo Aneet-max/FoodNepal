@@ -5,10 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -35,13 +37,14 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private static final String TAG = "MainActivity";
     double longitude = 0;
     double latitude = 0;
     private GoogleMap mMap;
     private SupportMapFragment mapFragment;
     private FusedLocationProviderClient mFusedLocationClient;
+    private Location location;
     private LatLng latLng;
-    private View view;
 
 
     @Override
@@ -54,13 +57,12 @@ public class MainActivity extends AppCompatActivity
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        view = findViewById(R.id.map);
-
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                checkLocationPermission();
                 fetchAndShowLocation(mMap);
             }
         });
@@ -167,7 +169,8 @@ public class MainActivity extends AppCompatActivity
                             float zoomLevel = 15.0f; //This goes up to 21
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
                         } else {
-                            Snackbar.make(view, "Please enable location.", Snackbar.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Please enable location.", Toast.LENGTH_LONG).show();
+//                            openLocationSettings();
                         }
                     }
                 });
@@ -241,7 +244,8 @@ public class MainActivity extends AppCompatActivity
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-
+                    Toast.makeText(getApplicationContext(), "Please grant location permission", Toast.LENGTH_LONG).show();
+                    openAppSettings();
                 }
                 return;
             }
@@ -249,5 +253,33 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void openAppSettings() {
+        Intent intent = new Intent();
+        intent.setAction(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package",
+                BuildConfig.APPLICATION_ID, null);
+        intent.setData(uri);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void openLocationSettings() {
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Resuming location updates depending on button state and
+        // allowed permissions
+        if (checkLocationPermission()) {
+            fetchAndShowLocation(mMap);
+        }
+    }
 
 }
