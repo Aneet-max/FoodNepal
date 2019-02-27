@@ -26,6 +26,7 @@
         android:drawableLeft="@drawable/ic_phone"
         android:drawablePadding="12dp"
         android:ems="10"
+        android:maxLength="10"
         android:hint="@string/phone"
         android:inputType="phone"
         android:maxLines="1"
