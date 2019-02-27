@@ -31,6 +31,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MainActivity extends AppCompatActivity
@@ -167,7 +168,20 @@ public class MainActivity extends AppCompatActivity
                             // 15: Streets
                             // 20: Buildings
                             float zoomLevel = 15.0f; //This goes up to 21
+
+
+                            // Creating a marker
+                            MarkerOptions markerOptions = new MarkerOptions();
+
+                            // Setting the position for the marker
+                            markerOptions.position(latLng);
+
+                            // Setting the title for the marker.
+                            // This will be displayed on taping the marker
+                            markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
+                            mMap.addMarker(markerOptions);
                         } else {
                             Toast.makeText(getApplicationContext(), "Please enable location.", Toast.LENGTH_LONG).show();
 //                            openLocationSettings();
