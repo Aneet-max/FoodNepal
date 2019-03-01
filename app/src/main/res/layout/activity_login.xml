@@ -26,9 +26,9 @@
         android:drawableLeft="@drawable/ic_phone"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:maxLength="10"
         android:hint="@string/phone"
         android:inputType="phone"
+        android:maxLength="10"
         android:maxLines="1"
         android:padding="8dp"
         android:textColor="@color/colorGold"
@@ -68,10 +68,10 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="70dp"
+        android:background="@color/colorGold"
         android:clickable="true"
         android:padding="16dp"
         android:text="@string/login"
-        android:background="@color/colorGold"
         android:textAllCaps="false"
         android:textSize="18sp" />
 
