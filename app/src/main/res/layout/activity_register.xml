@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,11 +5,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
     android:fitsSystemWindows="true"
-    tools:context=".firebase.Login">
+    tools:context=".firebase.Register">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
@@ -38,11 +37,12 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/hint_email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white" />
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/white" />
+
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -51,25 +51,29 @@
 
             <EditText
                 android:id="@+id/password"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:focusableInTouchMode="true"
                 android:hint="@string/hint_password"
+                android:imeActionId="@+id/login"
+                android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white" />
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/white" />
+
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Login Button -->
-
         <Button
-            android:id="@+id/btn_login"
-            android:layout_width="fill_parent"
+            android:id="@+id/sign_up_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="16dp"
             android:background="@color/colorAccent"
-            android:text="@string/btn_login"
-            android:textColor="@android:color/white" />
+            android:text="@string/action_sign_in_short"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_reset_password"
@@ -84,12 +88,12 @@
         <!-- Link to Login Screen -->
 
         <Button
-            android:id="@+id/btn_signup"
+            android:id="@+id/sign_in_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@null"
-            android:text="@string/btn_link_to_register"
+            android:text="@string/btn_link_to_login"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15dp" />

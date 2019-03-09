@@ -15,4 +15,31 @@
     <string name="text_location_permission">We need location permission to show restaurants nearby you</string>
     <string name="ok">Ok</string>
     <string name="forgot">Forgot password?</string>
+
+
+    <string name="action_sign_in_short">Register</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed! Check your email and password</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Not a member? Get registered in Firebase now!</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email to send you password reset link.</string>
+
+    <string name="register_or_login">Looks like you haven\'t registered or logged in yet.</string>
+    <string name="weclome">Welcome to</string>
+    <string name="why_login_or_register">Inorder to use this app, you need to login or register first.</string>
+    <string name="bank">Banks</string>
+    <string name="tourismPlaces">Tourism Places</string>
+    <string name="health">Health</string>
+    <string name="foodnDrink">Food &amp; Drink</string>
+    <string name="location">Location</string>
+
+
 </resources>

@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
         public void run() {
-            Intent intent = new Intent(SplashActivity.this, Login.class);
+            Intent intent = new Intent(SplashActivity.this, Start.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }

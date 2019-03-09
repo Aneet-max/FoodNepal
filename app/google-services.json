@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "582199461334",
+    "firebase_url": "https://foodnepal-8c5df.firebaseio.com",
+    "project_id": "foodnepal-8c5df",
+    "storage_bucket": "foodnepal-8c5df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582199461334:android:8f62859e27220870",
+        "android_client_info": {
+          "package_name": "com.gaurav.foodnepal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582199461334-f2b29348tf4tjreue4hte3famb714a3g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gaurav.foodnepal",
+            "certificate_hash": "3393ff395e933a325ea0245047246ae45be82d84"
+          }
+        },
+        {
+          "client_id": "582199461334-efvacgod5vnushpvieqs3mhj3if1svip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBEP_XFwjpmgVwLnoYVBzmT2Wluobsr5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582199461334-efvacgod5vnushpvieqs3mhj3if1svip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
