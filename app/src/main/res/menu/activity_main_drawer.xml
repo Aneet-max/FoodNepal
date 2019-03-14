@@ -3,15 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single"></group>
 
-    <item android:title="Support Us">
-        <menu>
-            <item
-                android:id="@+id/nav_contribute"
-                android:icon="@drawable/ic_currency_usd"
-                android:title="Contribute" />
-        </menu>
-    </item>
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/nav_restaurant"
+            android:icon="@drawable/ic_restaurant"
+            android:title="Restaurant" />
+        <item
+            android:id="@+id/nav_contribute"
+            android:icon="@drawable/ic_currency_usd"
+            android:title="Contribute" />
+
+    </group>
+
 
 </menu>

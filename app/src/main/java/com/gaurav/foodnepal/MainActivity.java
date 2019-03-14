@@ -127,6 +127,14 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
 
+        if (id == R.id.nav_restaurant) {
+            Intent intent = new Intent(MainActivity.this, PlaceList.class);
+            Log.i(TAG, "onNavigationItemSelected: latittude n longitude: " + latitude + " " + longitude);
+            intent.putExtra("lat", String.valueOf(latitude));
+            intent.putExtra("lng", String.valueOf(longitude));
+            startActivity(intent);
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -178,13 +186,13 @@ public class MainActivity extends AppCompatActivity
 
                             // Setting the title for the marker.
                             // This will be displayed on taping the marker
-                            markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+                            markerOptions.title("You are currently here!");
 
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
                             mMap.addMarker(markerOptions);
                         } else {
                             Toast.makeText(getApplicationContext(), "Please enable location.", Toast.LENGTH_LONG).show();
-//                            openLocationSettings();
+                            openLocationSettings();
                         }
                     }
                 });

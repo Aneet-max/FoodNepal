@@ -16,4 +16,5 @@
     <dimen name="padding_top">16dp</dimen>
     <dimen name="text_top_padding">16dp</dimen>
     <dimen name="text_bottom_padding">8dp</dimen>
+    <dimen name="cardElevation">8dp</dimen>
 </resources>

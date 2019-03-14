@@ -49,6 +49,11 @@
         <activity android:name=".Start"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".PlaceList"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".PlaceDetail"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
 
     </application>
 
