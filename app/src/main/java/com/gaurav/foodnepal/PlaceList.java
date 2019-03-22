@@ -18,9 +18,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.gaurav.foodnepal.adapter.PlaceListAdapter;
-import com.google.android.gms.location.places.GeoDataClient;
 import com.gaurav.foodnepal.model.Places;
 import com.gaurav.foodnepal.touchlistener.RecyclerTouchListener;
+import com.google.android.gms.location.places.GeoDataClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;

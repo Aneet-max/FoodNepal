@@ -37,22 +37,28 @@
             android:name=".Khalti"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".firebase.Register"
+        <activity
+            android:name=".firebase.Register"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".firebase.Login"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".firebase.Login"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".firebase.ResetPassword"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".firebase.ResetPassword"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".Start"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Start"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".PlaceList"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".PlaceDetail"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".PlaceList"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PlaceDetail"
+            android:theme="@style/AppTheme.NoActionBar" />
 
 
     </application>

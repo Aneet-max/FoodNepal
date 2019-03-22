@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.gaurav.foodnepal.model.SubCategory;
 import com.gaurav.foodnepal.R;
-
+import com.gaurav.foodnepal.model.SubCategory;
 
 import java.util.List;
 

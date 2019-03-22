@@ -90,8 +90,8 @@
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/text_bottom_padding"
                 android:layout_marginTop="@dimen/text_top_padding"
+                android:layout_marginBottom="@dimen/text_bottom_padding"
                 android:paddingLeft="@dimen/padding_left"
                 android:text="@string/location"
                 android:textColor="@android:color/black"
@@ -101,10 +101,10 @@
                 android:id="@+id/mapCardView"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                android:layout_marginBottom="@dimen/padding_bottom"
                 android:layout_marginLeft="@dimen/padding_left"
+                android:layout_marginTop="@dimen/padding_top"
                 android:layout_marginRight="@dimen/padding_right"
-                android:layout_marginTop="@dimen/padding_top">
+                android:layout_marginBottom="@dimen/padding_bottom">
 
                 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:tools="http://schemas.android.com/tools"

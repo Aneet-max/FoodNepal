@@ -29,7 +29,7 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.Plac
 
     private List<Places> placeList;
     private Context context;
-    private String key = "AIzaSyARKvcVfWEatAKBOmZood5jdSSI78bprGA";
+    private String key = "AIzaSyBXK6vd1O5hLkN5ZQtZCZbj8t6O9-CBriM";
     private double lat;
     private double lng;
     private String baseUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=";
@@ -61,37 +61,39 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.Plac
         /**
          * Fetching photos of places using placeId and setting photos on imageview of recyclerview
          */
-//        if (!places.getPhotoRefrence().equals("null")) {
+        if (!places.getPhotoRefrence().equals("null")) {
 //            String photorefrence = places.getPhotoRefrence();
 //            String url = baseUrl + photorefrence + "&key=" + key;
 //
-//
-//            final String placeId = places.getPlaceId();
-//            final Task<PlacePhotoMetadataResponse> photoMetadataResponse = mGeoDataClient.getPlacePhotos(placeId);
-//            photoMetadataResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoMetadataResponse>() {
-//                @Override
-//                public void onComplete(@NonNull Task<PlacePhotoMetadataResponse> task) {
-//                    // Get the list of photos.
-//                    PlacePhotoMetadataResponse photos = task.getResult();
-//                    // Get the PlacePhotoMetadataBuffer (metadata for all of the photos).
-//                    PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
-//                    // Get the first photo in the list.
-//                    PlacePhotoMetadata photoMetadata = photoMetadataBuffer.get(0);
-//                    // Get the attribution text.
-//                    CharSequence attribution = photoMetadata.getAttributions();
-//                    // Get a full-size bitmap for the photo.
-//                    Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(photoMetadata);
-//                    photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
-//                            PlacePhotoResponse photo = task.getResult();
-//                            Bitmap bitmap = photo.getBitmap();
-//                            holder.placeListIV.setImageBitmap(bitmap);
-//                        }
-//                    });
-//                }
-//            });
-//        }
+//            Glide.with(context).load(url).into(holder.placeListIV);
+
+
+            final String placeId = places.getPlaceId();
+            final Task<PlacePhotoMetadataResponse> photoMetadataResponse = mGeoDataClient.getPlacePhotos(placeId);
+            photoMetadataResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoMetadataResponse>() {
+                @Override
+                public void onComplete(@NonNull Task<PlacePhotoMetadataResponse> task) {
+                    // Get the list of photos.
+                    PlacePhotoMetadataResponse photos = task.getResult();
+                    // Get the PlacePhotoMetadataBuffer (metadata for all of the photos).
+                    PlacePhotoMetadataBuffer photoMetadataBuffer = photos.getPhotoMetadata();
+                    // Get the first photo in the list.
+                    PlacePhotoMetadata photoMetadata = photoMetadataBuffer.get(0);
+                    // Get the attribution text.
+                    CharSequence attribution = photoMetadata.getAttributions();
+                    // Get a full-size bitmap for the photo.
+                    Task<PlacePhotoResponse> photoResponse = mGeoDataClient.getPhoto(photoMetadata);
+                    photoResponse.addOnCompleteListener(new OnCompleteListener<PlacePhotoResponse>() {
+                        @Override
+                        public void onComplete(@NonNull Task<PlacePhotoResponse> task) {
+                            PlacePhotoResponse photo = task.getResult();
+                            Bitmap bitmap = photo.getBitmap();
+                            holder.placeListIV.setImageBitmap(bitmap);
+                        }
+                    });
+                }
+            });
+        }
 
         /**
          * Calculating distance in meter using two coordinates and setting it in distance textview
