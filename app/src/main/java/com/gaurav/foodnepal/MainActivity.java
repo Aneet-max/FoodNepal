@@ -3,6 +3,7 @@ package com.gaurav.foodnepal;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
@@ -133,6 +134,18 @@ public class MainActivity extends AppCompatActivity
             intent.putExtra("lat", String.valueOf(latitude));
             intent.putExtra("lng", String.valueOf(longitude));
             startActivity(intent);
+        }
+
+        if (id == R.id.nav_logout) {
+            SharedPreferences.Editor editor = getSharedPreferences("SCTPref", MODE_PRIVATE).edit();
+            editor.putBoolean("userRegistered", false);
+            editor.putString("email", "");
+            editor.apply();
+
+            Intent intent = new Intent(MainActivity.this, Start.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
