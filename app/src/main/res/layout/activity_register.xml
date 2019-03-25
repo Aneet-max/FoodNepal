@@ -42,8 +42,8 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColorHighlight="@android:color/white"
                 android:textColor="@android:color/white"
+                android:textColorHighlight="@android:color/white"
                 android:textColorHint="@android:color/white" />
 
         </android.support.design.widget.TextInputLayout>

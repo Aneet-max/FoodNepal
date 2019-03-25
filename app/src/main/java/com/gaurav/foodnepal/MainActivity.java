@@ -34,6 +34,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity
     private GoogleMap mMap;
     private SupportMapFragment mapFragment;
     private FusedLocationProviderClient mFusedLocationClient;
-    private Location location;
+    //    private Location location;
     private LatLng latLng;
 
 
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
 
     @Override
     public void onBackPressed() {
@@ -137,10 +139,15 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.nav_logout) {
+
+            // removing user info from sharedpref
             SharedPreferences.Editor editor = getSharedPreferences("SCTPref", MODE_PRIVATE).edit();
             editor.putBoolean("userRegistered", false);
             editor.putString("email", "");
             editor.apply();
+
+            // logout user from firebase
+            FirebaseAuth.getInstance().signOut();
 
             Intent intent = new Intent(MainActivity.this, Start.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

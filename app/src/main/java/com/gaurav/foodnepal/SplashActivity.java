@@ -43,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
                 // Start your app main activity
                 SharedPreferences pref = getSharedPreferences("SCTPref", MODE_PRIVATE);
                 boolean isUserRegistred = pref.getBoolean("userRegistered", false);
-                Log.i("TAG", "run: isUserRegistre: " + isUserRegistred);
+                Log.i("TAG", "run: isUserRegister: " + isUserRegistred);
                 if (isUserRegistred) {
                     Intent i = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(i);
