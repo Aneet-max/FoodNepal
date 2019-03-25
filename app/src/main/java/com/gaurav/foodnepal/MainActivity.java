@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -70,6 +71,19 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // setting user email on navbar
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        SharedPreferences pref = getSharedPreferences("SCTPref", MODE_PRIVATE);
+        String userEmail = pref.getString("email", "");
+
+        View header = navigationView.getHeaderView(0);
+        TextView emailTV = header.findViewById(R.id.navUserEmail);
+        Menu nav_Menu = navigationView.getMenu();
+
+        emailTV.setText(userEmail);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -81,9 +95,6 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
 

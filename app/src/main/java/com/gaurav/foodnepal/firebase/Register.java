@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.gaurav.foodnepal.MainActivity;
 import com.gaurav.foodnepal.R;
 import com.gaurav.foodnepal.Start;
+import com.gaurav.foodnepal.utility.Utility;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -89,6 +90,10 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                // hiding keyboard
+                Utility.hideKeyboardFrom(getApplicationContext(), getWindow().getDecorView().findViewById(android.R.id.content));
+
 
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
