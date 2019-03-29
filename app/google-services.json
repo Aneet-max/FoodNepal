@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "582199461334-epldijum6vlsg9ns5pi0cimr38l6n16h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gaurav.foodnepal",
+            "certificate_hash": "21707d465d4a3b7314cca7e82525ab10477c8151"
+          }
+        },
+        {
           "client_id": "582199461334-efvacgod5vnushpvieqs3mhj3if1svip.apps.googleusercontent.com",
           "client_type": 3
         }

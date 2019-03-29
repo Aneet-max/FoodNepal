@@ -86,7 +86,7 @@ public class Trip {
                 ", tripName='" + tripName + '\'' +
                 ", place='" + place + '\'' +
                 ", date='" + date + '\'' +
-                ", placeId='" + placeId + '\'' +
+                ", userName='" + placeId + '\'' +
                 ", lat='" + lat + '\'' +
                 ", lng='" + lng + '\'' +
                 '}';

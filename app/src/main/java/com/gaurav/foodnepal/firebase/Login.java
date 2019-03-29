@@ -1,6 +1,5 @@
 package com.gaurav.foodnepal.firebase;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,8 +22,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import okhttp3.internal.Util;
 
 public class Login extends AppCompatActivity {
 

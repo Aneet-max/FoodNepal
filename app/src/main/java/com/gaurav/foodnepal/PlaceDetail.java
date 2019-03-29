@@ -1,9 +1,9 @@
 package com.gaurav.foodnepal;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,14 +13,23 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gaurav.foodnepal.adapter.ReviewAdapter;
+import com.gaurav.foodnepal.model.UserReview;
+import com.gaurav.foodnepal.utility.Utility;
 import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.PlacePhotoMetadata;
 import com.google.android.gms.location.places.PlacePhotoMetadataBuffer;
@@ -35,9 +44,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.RuntimeExecutionException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback {
 
+    DatabaseReference databaseReference;
     private GoogleMap mMap;
     private Intent intent;
     private String placeName, placeId;
@@ -47,6 +65,9 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
     private FloatingActionButton directionFAB;
     private double latitude, longitude;
     private Context context;
+    private EditText editTextUserReview;
+    private ListView userReviewList;
+    private List<UserReview> reviewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +76,17 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         intent = getIntent();
 
         mGeoDataClient = com.google.android.gms.location.places.Places.getGeoDataClient(this, null);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("reviews");
+
+        // to push layout up
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        userReviewList = findViewById(R.id.userReviewListView);
+
+        reviewList = new ArrayList<>();
+
+        Utility.hideKeyboardFrom(getApplicationContext(), getWindow().getDecorView().findViewById(android.R.id.content));
 
 
         placeName = intent.getStringExtra("selected");
@@ -66,11 +98,16 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         longitude = intent.getDoubleExtra("lng", 0.0);
 
         titleTV = findViewById(R.id.placeTitle);
-        directionFAB = findViewById(R.id.fabDirection);
+        directionFAB = findViewById(R.id.fabSubmit);
+
+        editTextUserReview = findViewById(R.id.editTextUserReview);
+//        editTextUserReview.setFocusable(false);
 
         titleTV.setText(placeName);
 
         coverImageView = findViewById(R.id.coverImageView);
+
+        Log.i("TAG", "onCreate: PlaceId: " + placeId);
 
         /**
          * Fetching photos of places using placeId and setting photos on imageview of recyclerview
@@ -124,30 +161,84 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
+        editTextUserReview.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!TextUtils.isEmpty(editTextUserReview.getText().toString())){
+                    directionFAB.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(!TextUtils.isEmpty(editTextUserReview.getText().toString())){
+                    directionFAB.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         directionFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isGoogleMapsInstalled()) {
-                    String uri = "http://maps.google.com/maps?daddr=" + latitude + "," + longitude;
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                    try {
-                        startActivity(intent);
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(getApplicationContext(), "Please enable your Google Maps!", Toast.LENGTH_SHORT).show();
-                    }
+
+                String review = editTextUserReview.getText().toString();
+
+                SharedPreferences pref = getSharedPreferences("SCTPref", MODE_PRIVATE);
+                String userEmail = pref.getString("email", "");
+                String[] userEmailSplit = userEmail.split("@");
+                String userName = userEmailSplit[0];
+
+                if (!TextUtils.isEmpty(review)) {
+                    String id = databaseReference.push().getKey();
+
+                    UserReview userReview = new UserReview(review, userName);
+
+                    databaseReference.child(placeId).child(id).setValue(userReview);
+
+                    Toast.makeText(getApplicationContext(), "Thank you for submitting review.", Toast.LENGTH_LONG).show();
+
+                    editTextUserReview.setText("");
+
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(PlaceDetail.this);
-                    builder.setMessage("Please install Google Maps");
-                    builder.setCancelable(false);
-                    builder.setPositiveButton("Install", getGoogleMapsListener());
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
+                    Toast.makeText(getApplicationContext(), "Please enter a review", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                reviewList.clear();
+
+                if(dataSnapshot.child(placeId).exists()) {
+                    for (DataSnapshot userReviewSnapshot : dataSnapshot.child(placeId).getChildren()) {
+                        UserReview userReview = userReviewSnapshot.getValue(UserReview.class);
+
+                        reviewList.add(userReview);
+                    }
+
+                    ReviewAdapter reviewAdapter = new ReviewAdapter(PlaceDetail.this, reviewList);
+                    userReviewList.setAdapter(reviewAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     /**
      * Manipulates the map once available.

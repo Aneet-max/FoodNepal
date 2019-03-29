@@ -101,7 +101,7 @@ public class Places {
                 ", lng=" + lng +
                 ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", placeId='" + placeId + '\'' +
+                ", userName='" + placeId + '\'' +
                 ", rating=" + rating +
                 ", photoRefrence='" + photoRefrence + '\'' +
                 ", vicinity='" + vicinity + '\'' +
