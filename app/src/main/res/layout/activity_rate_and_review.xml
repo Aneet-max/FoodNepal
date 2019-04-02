@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".RateAndReview">
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:paddingTop="30dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBarUserReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userNameTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:numStars="5"
+            android:stepSize="1" />
+
+
+        <EditText
+            android:id="@+id/userReviewEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ratingBarUserReview"
+            android:hint="Share details of your own experience at this place"
+            android:padding="16dp"
+            android:textSize="16sp" />
+
+
+        <Button
+            android:id="@+id/postButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userReviewEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorAccent"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="POST" />
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

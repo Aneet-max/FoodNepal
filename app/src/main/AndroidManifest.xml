@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -36,7 +37,6 @@
         <activity
             android:name=".Khalti"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".firebase.Register"
             android:screenOrientation="portrait"
@@ -59,8 +59,9 @@
         <activity
             android:name=".PlaceDetail"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
+        <activity android:name=".RateAndReview"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".PlaceDetail"/>
     </application>
 
 </manifest>

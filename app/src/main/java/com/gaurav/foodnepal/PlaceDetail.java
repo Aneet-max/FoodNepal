@@ -21,9 +21,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,7 +65,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
     private FloatingActionButton directionFAB;
     private double latitude, longitude;
     private Context context;
-    private EditText editTextUserReview;
+    private RatingBar ratingBarUserReview;
     private ListView userReviewList;
     private List<UserReview> reviewList;
 
@@ -100,8 +100,8 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         titleTV = findViewById(R.id.placeTitle);
         directionFAB = findViewById(R.id.fabSubmit);
 
-        editTextUserReview = findViewById(R.id.editTextUserReview);
-//        editTextUserReview.setFocusable(false);
+        ratingBarUserReview = findViewById(R.id.ratingBarUserReview);
+//        ratingBarUserReview.setFocusable(false);
 
         titleTV.setText(placeName);
 
@@ -161,52 +161,14 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
-        editTextUserReview.addTextChangedListener(new TextWatcher() {
+        ratingBarUserReview.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!TextUtils.isEmpty(editTextUserReview.getText().toString())){
-                    directionFAB.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(!TextUtils.isEmpty(editTextUserReview.getText().toString())){
-                    directionFAB.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        directionFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String review = editTextUserReview.getText().toString();
-
-                SharedPreferences pref = getSharedPreferences("SCTPref", MODE_PRIVATE);
-                String userEmail = pref.getString("email", "");
-                String[] userEmailSplit = userEmail.split("@");
-                String userName = userEmailSplit[0];
-
-                if (!TextUtils.isEmpty(review)) {
-                    String id = databaseReference.push().getKey();
-
-                    UserReview userReview = new UserReview(review, userName);
-
-                    databaseReference.child(placeId).child(id).setValue(userReview);
-
-                    Toast.makeText(getApplicationContext(), "Thank you for submitting review.", Toast.LENGTH_LONG).show();
-
-                    editTextUserReview.setText("");
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please enter a review", Toast.LENGTH_LONG).show();
-                }
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                Intent intent = new Intent(PlaceDetail.this, RateAndReview.class);
+                intent.putExtra("rating", v);
+                intent.putExtra("placeName", placeName);
+                intent.putExtra("placeId", placeId);
+                startActivity(intent);
             }
         });
 

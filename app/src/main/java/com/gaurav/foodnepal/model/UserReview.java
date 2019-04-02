@@ -4,13 +4,24 @@ public class UserReview {
 
     String review;
     String userName;
+    Float rating;
 
     public UserReview() {
     }
 
-    public UserReview(String review, String userName) {
+
+    public UserReview(String review, String userName, Float rating) {
         this.review = review;
         this.userName = userName;
+        this.rating = rating;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 
     public String getReview() {
@@ -29,11 +40,13 @@ public class UserReview {
         this.userName = userName;
     }
 
+
     @Override
     public String toString() {
         return "UserReview{" +
                 "review='" + review + '\'' +
                 ", userName='" + userName + '\'' +
+                ", rating=" + rating +
                 '}';
     }
 }
