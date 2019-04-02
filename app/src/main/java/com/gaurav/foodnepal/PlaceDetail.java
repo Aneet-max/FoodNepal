@@ -3,7 +3,6 @@ package com.gaurav.foodnepal;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -15,17 +14,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gaurav.foodnepal.adapter.ReviewAdapter;
 import com.gaurav.foodnepal.model.UserReview;
@@ -101,7 +95,6 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         directionFAB = findViewById(R.id.fabSubmit);
 
         ratingBarUserReview = findViewById(R.id.ratingBarUserReview);
-//        ratingBarUserReview.setFocusable(false);
 
         titleTV.setText(placeName);
 
@@ -183,7 +176,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 reviewList.clear();
 
-                if(dataSnapshot.child(placeId).exists()) {
+                if (dataSnapshot.child(placeId).exists()) {
                     for (DataSnapshot userReviewSnapshot : dataSnapshot.child(placeId).getChildren()) {
                         UserReview userReview = userReviewSnapshot.getValue(UserReview.class);
 

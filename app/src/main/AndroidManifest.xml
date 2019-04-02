@@ -59,9 +59,10 @@
         <activity
             android:name=".PlaceDetail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RateAndReview"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".PlaceDetail"/>
+        <activity
+            android:name=".RateAndReview"
+            android:parentActivityName=".PlaceDetail"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

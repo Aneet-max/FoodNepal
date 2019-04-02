@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.gaurav.foodnepal.R;
@@ -35,11 +36,18 @@ public class ReviewAdapter extends ArrayAdapter<UserReview> {
 
         TextView userNameTextView = listViewItem.findViewById(R.id.userNameTextView);
 
+        RatingBar ratingBar = listViewItem.findViewById(R.id.ratingBar);
+
         UserReview userReview = userReviewList.get(position);
+        String userEmail = userReview.getUserName();
+        String[] userEmailSplit = userEmail.split("@");
+        String userName = userEmailSplit[0];
 
         userReviewTextView.setText(userReview.getReview());
 
-        userNameTextView.setText("- " + userReview.getUserName());
+        userNameTextView.setText("- " + userName);
+
+        ratingBar.setRating(userReview.getRating());
 
         return listViewItem;
     }

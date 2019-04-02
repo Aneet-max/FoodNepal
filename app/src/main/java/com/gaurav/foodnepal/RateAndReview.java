@@ -63,13 +63,11 @@ public class RateAndReview extends AppCompatActivity {
 
                 Float rating = ratingBar.getRating();
 
-                String[] userEmailSplit = userEmail.split("@");
-                String userName = userEmailSplit[0];
 
                 if (!TextUtils.isEmpty(review)) {
                     String id = databaseReference.push().getKey();
 
-                    UserReview userReview = new UserReview(review, userName, rating);
+                    UserReview userReview = new UserReview(review, userEmail, rating);
 
                     databaseReference.child(placeId).child(id).setValue(userReview);
 
