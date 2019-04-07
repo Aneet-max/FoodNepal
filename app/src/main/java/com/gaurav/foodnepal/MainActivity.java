@@ -149,8 +149,13 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
 
-        if (id == R.id.nav_about_us){
+        if (id == R.id.nav_about_us) {
             Intent intent = new Intent(MainActivity.this, AboutUs.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.nav_feedback) {
+            Intent intent = new Intent(MainActivity.this, Feedback.class);
             startActivity(intent);
         }
 

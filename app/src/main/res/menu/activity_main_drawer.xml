@@ -17,13 +17,16 @@
             android:title="Contribute" />
 
         <item
-            android:id="@+id/nav_about_us"
-            android:title="About Us"/>
-
-        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
             android:title="LogOut" />
+
+        <item
+            android:id="@+id/nav_about_us"
+            android:title="About Us"/>
+        <item
+            android:id="@+id/nav_feedback"
+            android:title="Feedback"/>
 
     </group>
 

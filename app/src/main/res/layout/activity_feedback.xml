@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Feedback">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/feedbackTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Feedback"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <View
+            android:id="@+id/view0"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/feedbackTV" />
+
+        <EditText
+            android:id="@+id/feedbackName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view0"
+            android:layout_margin="16dp"
+            android:background="@color/white"
+            android:hint="Your name here..."
+            android:padding="16dp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/feedbackName" />
+
+        <EditText
+            android:id="@+id/feedbackEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view1"
+            android:layout_margin="16dp"
+            android:background="@color/white"
+            android:hint="Your email here..."
+            android:padding="16dp" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/feedbackEmail" />
+
+        <EditText
+            android:id="@+id/feedbackET"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@id/view2"
+            android:layout_centerVertical="true"
+            android:layout_margin="16dp"
+            android:autoLink="all"
+            android:background="@color/white"
+            android:gravity="top|left"
+            android:hint="Your feedback here..."
+            android:inputType="textMultiLine|textCapSentences"
+            android:lines="5"
+            android:maxLines="10"
+            android:minLines="1"
+            android:padding="16dp"
+            android:scrollbars="none" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/feedbackET" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view3"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/holo_orange_light"
+            android:text="Submit" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
