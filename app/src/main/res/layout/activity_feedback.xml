@@ -65,7 +65,7 @@
         <EditText
             android:id="@+id/feedbackET"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:layout_below="@id/view2"
             android:layout_centerVertical="true"
             android:layout_margin="16dp"
@@ -93,7 +93,6 @@
             android:layout_below="@id/view3"
             android:padding="16dp"
             android:layout_margin="16dp"
-            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@android:color/holo_orange_light"
             android:text="Submit" />
