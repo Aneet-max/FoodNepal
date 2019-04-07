@@ -26,6 +26,8 @@ public class Feedback extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
 
+        getSupportActionBar().setTitle("Feedback");
+
         nameET = findViewById(R.id.feedbackName);
         emailET = findViewById(R.id.feedbackEmail);
         feedbackET = findViewById(R.id.feedbackET);
