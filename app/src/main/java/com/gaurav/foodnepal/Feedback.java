@@ -34,7 +34,7 @@ public class Feedback extends AppCompatActivity {
 
         submitBtn = findViewById(R.id.submitBtn);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("reviews");
+        databaseReference = FirebaseDatabase.getInstance().getReference("feedbacks");
 
 
         SharedPreferences pref = getSharedPreferences("SCTPref", MODE_PRIVATE);
@@ -57,9 +57,15 @@ public class Feedback extends AppCompatActivity {
                     databaseReference.child(id).setValue(userReview);
 
                     Toast.makeText(getApplicationContext(), "Thank you for submitting feedback.", Toast.LENGTH_LONG).show();
+                    onBackPressed();
                 }
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
