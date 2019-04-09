@@ -307,8 +307,8 @@ public class MainActivity extends AppCompatActivity
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Toast.makeText(getApplicationContext(), "Please grant location permission", Toast.LENGTH_LONG).show();
-                    openAppSettings();
+//                    Toast.makeText(getApplicationContext(), "Please grant location permission", Toast.LENGTH_LONG).show();
+//                    openAppSettings();
                 }
                 return;
             }
