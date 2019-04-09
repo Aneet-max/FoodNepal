@@ -77,6 +77,11 @@ public class Utility {
     }
 
 
+    /**
+     * Hides soft keyboard
+     * @param context
+     * @param view
+     */
     public static void hideKeyboardFrom(Context context, View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
