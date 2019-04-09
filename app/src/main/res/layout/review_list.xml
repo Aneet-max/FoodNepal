@@ -15,8 +15,8 @@
             android:id="@+id/userReviewTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingBottom="5dp"
@@ -25,21 +25,21 @@
 
         <RatingBar
             android:id="@+id/ratingBar"
+            style="@android:style/Widget.Holo.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/userReviewTextView"
             android:layout_centerHorizontal="true"
-            android:numStars="5"
-            style="@android:style/Widget.Holo.RatingBar.Small"
             android:layout_margin="8dp"
-            android:layout_below="@id/userReviewTextView"/>
+            android:numStars="5" />
 
         <TextView
             android:id="@+id/userNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@id/ratingBar"
-            android:gravity="center"
             android:layout_alignParentRight="true"
+            android:gravity="center"
             android:paddingLeft="8dp"
             android:paddingRight="16dp"
             android:paddingBottom="8dp"

@@ -121,8 +121,8 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
-                android:padding="16dp"
-                android:background="#5A5858" />
+                android:background="#5A5858"
+                android:padding="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -155,8 +155,8 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
-                android:padding="16dp"
-                android:background="#5A5858" />
+                android:background="#5A5858"
+                android:padding="16dp" />
 
             <ListView
                 android:id="@+id/userReviewListView"

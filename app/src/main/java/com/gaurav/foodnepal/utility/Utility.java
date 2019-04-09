@@ -79,6 +79,7 @@ public class Utility {
 
     /**
      * Hides soft keyboard
+     *
      * @param context
      * @param view
      */
