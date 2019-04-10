@@ -100,7 +100,6 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
 
         coverImageView = findViewById(R.id.coverImageView);
 
-        Log.i("TAG", "onCreate: PlaceId: " + placeId);
 
         /**
          * Fetching photos of places using placeId and setting photos on imageview of recyclerview
@@ -149,7 +148,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         getSupportActionBar().
 
                 setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle(placeName);
+        getSupportActionBar().setTitle(placeName);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
