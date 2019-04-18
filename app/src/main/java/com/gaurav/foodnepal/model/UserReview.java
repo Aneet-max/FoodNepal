@@ -2,18 +2,30 @@ package com.gaurav.foodnepal.model;
 
 public class UserReview {
 
+    String id;
     String review;
     String userName;
     Float rating;
+    Integer vote;
 
     public UserReview() {
     }
 
 
-    public UserReview(String review, String userName, Float rating) {
+    public UserReview(String id, String review, String userName, Float rating, Integer vote) {
+        this.id = id;
         this.review = review;
         this.userName = userName;
         this.rating = rating;
+        this.vote = vote;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Float getRating() {
@@ -40,13 +52,22 @@ public class UserReview {
         this.userName = userName;
     }
 
+    public Integer getVote() {
+        return vote;
+    }
+
+    public void setVote(Integer vote) {
+        this.vote = vote;
+    }
 
     @Override
     public String toString() {
         return "UserReview{" +
-                "review='" + review + '\'' +
+                "id='" + id + '\'' +
+                ", review='" + review + '\'' +
                 ", userName='" + userName + '\'' +
                 ", rating=" + rating +
+                ", vote=" + vote +
                 '}';
     }
 }

@@ -67,7 +67,7 @@ public class RateAndReview extends AppCompatActivity {
                 if (!TextUtils.isEmpty(review)) {
                     String id = databaseReference.push().getKey();
 
-                    UserReview userReview = new UserReview(review, userEmail, rating);
+                    UserReview userReview = new UserReview(id, review, userEmail, rating, 0);
 
                     databaseReference.child(placeId).child(id).setValue(userReview);
 

@@ -7,42 +7,80 @@
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="5">
 
-        <TextView
-            android:id="@+id/userReviewTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="5dp"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            style="@android:style/Widget.Holo.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/userReviewTextView"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="8dp"
-            android:numStars="5" />
-
-        <TextView
-            android:id="@+id/userNameTextView"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_below="@id/ratingBar"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:paddingLeft="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:textSize="18sp" />
-    </RelativeLayout>
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/upvote"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_up" />
+
+            <TextView
+                android:id="@+id/upvoteCount"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_below="@id/upvote"
+                android:paddingStart="2dp"
+                android:text="10"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/downvote"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_below="@id/upvoteCount"
+                android:src="@drawable/ic_down" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+            <TextView
+                android:id="@+id/userReviewTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="5dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@android:style/Widget.Holo.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userReviewTextView"
+                android:layout_margin="8dp"
+                android:numStars="5" />
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ratingBar"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
 </android.support.v7.widget.CardView>

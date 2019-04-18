@@ -61,6 +61,8 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
     private RatingBar ratingBarUserReview;
     private ListView userReviewList;
     private List<UserReview> reviewList;
+    private ImageView upvote;
+    private ImageView downvote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         userReviewList = findViewById(R.id.userReviewListView);
+
 
         reviewList = new ArrayList<>();
 
@@ -181,7 +184,8 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
                         reviewList.add(userReview);
                     }
 
-                    ReviewAdapter reviewAdapter = new ReviewAdapter(PlaceDetail.this, reviewList);
+                    ReviewAdapter reviewAdapter = new ReviewAdapter(PlaceDetail.this, reviewList,
+                            databaseReference, placeId);
                     userReviewList.setAdapter(reviewAdapter);
                 }
             }
