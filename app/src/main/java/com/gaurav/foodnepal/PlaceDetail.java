@@ -14,6 +14,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -61,8 +62,8 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
     private RatingBar ratingBarUserReview;
     private ListView userReviewList;
     private List<UserReview> reviewList;
-    private ImageView upvote;
-    private ImageView downvote;
+    private String sainoId = "ChIJgcuyvcyVlTkRh-YdJzZktjY";
+    private TextView placePhone, placeTime, placeDes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,16 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         userReviewList = findViewById(R.id.userReviewListView);
+
+        placePhone = findViewById(R.id.placePhone);
+        placeDes = findViewById(R.id.placeDes);
+        placeTime = findViewById(R.id.placeTime);
+
+        if (placeId.equals(sainoId)) {
+            placePhone.setVisibility(View.VISIBLE);
+            placeTime.setVisibility(View.VISIBLE);
+            placeDes.setVisibility(View.VISIBLE);
+        }
 
 
         reviewList = new ArrayList<>();

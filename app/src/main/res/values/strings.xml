@@ -42,5 +42,7 @@
     <string name="location">Location</string>
     <string name="about_us">Edit here.......</string>
 
+    <string name="sainoDec">Wifi availability : Yes\nParking: Yes\nPayment method: Cash\n </string>
+
 
 </resources>
