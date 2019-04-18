@@ -84,12 +84,6 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         placeDes = findViewById(R.id.placeDes);
         placeTime = findViewById(R.id.placeTime);
 
-        if (placeId.equals(sainoId)) {
-            placePhone.setVisibility(View.VISIBLE);
-            placeTime.setVisibility(View.VISIBLE);
-            placeDes.setVisibility(View.VISIBLE);
-        }
-
 
         reviewList = new ArrayList<>();
 
@@ -112,6 +106,14 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         titleTV.setText(placeName);
 
         coverImageView = findViewById(R.id.coverImageView);
+
+
+        if (placeId.equals(sainoId)) {
+            placePhone.setVisibility(View.VISIBLE);
+            placeTime.setVisibility(View.VISIBLE);
+            placeDes.setVisibility(View.VISIBLE);
+        }
+
 
 
         /**
