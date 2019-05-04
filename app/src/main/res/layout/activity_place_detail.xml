@@ -204,12 +204,12 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabSubmit"
+        android:id="@+id/fabDirection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:padding="16dp"
         android:visibility="gone"
-        app:srcCompat="@drawable/ic_done" />
+        app:srcCompat="@drawable/ic_directions" />
 </android.support.design.widget.CoordinatorLayout>

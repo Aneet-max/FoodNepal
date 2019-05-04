@@ -1,5 +1,6 @@
 package com.gaurav.foodnepal;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gaurav.foodnepal.adapter.ReviewAdapter;
 import com.gaurav.foodnepal.model.UserReview;
@@ -99,7 +102,8 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         longitude = intent.getDoubleExtra("lng", 0.0);
 
         titleTV = findViewById(R.id.placeTitle);
-        directionFAB = findViewById(R.id.fabSubmit);
+        directionFAB = findViewById(R.id.fabDirection);
+        directionFAB.setVisibility(View.VISIBLE);
 
         ratingBarUserReview = findViewById(R.id.ratingBarUserReview);
 
@@ -179,6 +183,29 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
+        directionFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isGoogleMapsInstalled()) {
+                    String uri = "http://maps.google.com/maps?daddr=" + latitude + "," + longitude;
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    try {
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(getApplicationContext(), "Please enable your Google Maps!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PlaceDetail.this);
+                    builder.setMessage("Please install Google Maps");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton("Install", getGoogleMapsListener());
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+
+            }
+        });
+
     }
 
     @Override
@@ -205,7 +232,9 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                if(isGoogleMapsInstalled()){
+                    getGoogleMapsListener();
+                }
             }
         });
     }
