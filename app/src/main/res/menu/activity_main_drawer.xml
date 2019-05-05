@@ -12,6 +12,18 @@
             android:icon="@drawable/ic_restaurant"
             android:title="Nearby Restaurant" />
         <item
+            android:id="@+id/nav_bakery"
+            android:icon="@drawable/ic_bakery"
+            android:title="Nearby Bakery" />
+        <item
+            android:id="@+id/nav_cafe"
+            android:icon="@drawable/ic_cafe"
+            android:title="Nearby Cafe" />
+        <item
+            android:id="@+id/nav_bar"
+            android:icon="@drawable/ic_bar"
+            android:title="Nearby Bar" />
+        <item
             android:id="@+id/nav_contribute"
             android:icon="@drawable/ic_currency_usd"
             android:title="Contribute" />

@@ -143,9 +143,30 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_restaurant) {
             Intent intent = new Intent(MainActivity.this, PlaceList.class);
-            Log.i(TAG, "onNavigationItemSelected: latittude n longitude: " + latitude + " " + longitude);
             intent.putExtra("lat", String.valueOf(latitude));
             intent.putExtra("lng", String.valueOf(longitude));
+            intent.putExtra("type", "restaurant");
+            startActivity(intent);
+        }
+        if (id == R.id.nav_bakery) {
+            Intent intent = new Intent(MainActivity.this, PlaceList.class);
+            intent.putExtra("lat", String.valueOf(latitude));
+            intent.putExtra("lng", String.valueOf(longitude));
+            intent.putExtra("type", "bakery");
+            startActivity(intent);
+        }
+        if (id == R.id.nav_cafe) {
+            Intent intent = new Intent(MainActivity.this, PlaceList.class);
+            intent.putExtra("lat", String.valueOf(latitude));
+            intent.putExtra("lng", String.valueOf(longitude));
+            intent.putExtra("type", "cafe");
+            startActivity(intent);
+        }
+        if (id == R.id.nav_bar) {
+            Intent intent = new Intent(MainActivity.this, PlaceList.class);
+            intent.putExtra("lat", String.valueOf(latitude));
+            intent.putExtra("lng", String.valueOf(longitude));
+            intent.putExtra("type", "bar");
             startActivity(intent);
         }
 
@@ -180,7 +201,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         fetchAndShowLocation(googleMap);

@@ -35,8 +35,7 @@ public class PlaceList extends AppCompatActivity {
     private String latitude;
     private String longitude;
     private Intent intent;
-    private String type = "restaurant";
-    private String title = "Restaurant";
+    private String type = "";
     private ProgressDialog dialog;
     private List<Places> placeArrayList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -59,6 +58,7 @@ public class PlaceList extends AppCompatActivity {
         intent = getIntent();
         latitude = intent.getStringExtra("lat");
         longitude = intent.getStringExtra("lng");
+        type = intent.getStringExtra("type");
 
         // get places details
         getPlaces();
@@ -66,7 +66,7 @@ public class PlaceList extends AppCompatActivity {
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setTitle(type.toUpperCase());
 
         recyclerView = findViewById(R.id.placeListRV);
 
