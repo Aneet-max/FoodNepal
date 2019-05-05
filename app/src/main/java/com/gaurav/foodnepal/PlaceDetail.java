@@ -119,7 +119,6 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         }
 
 
-
         /**
          * Fetching photos of places using placeId and setting photos on imageview of recyclerview
          */
@@ -232,7 +231,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                if(isGoogleMapsInstalled()){
+                if (isGoogleMapsInstalled()) {
                     getGoogleMapsListener();
                 }
             }

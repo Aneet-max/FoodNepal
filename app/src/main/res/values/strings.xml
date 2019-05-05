@@ -3,18 +3,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Food Nepal</string>
-    <string name="nav_header_subtitle">foodnepal@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="login">Login</string>
-    <string name="phone">Phone</string>
-    <string name="hintpassword">Password</string>
-    <string name="login_auto">Login Automatically</string>
-    <string name="signup">Sign Up</string>
     <string name="title_location_permission">Grant Location Access</string>
     <string name="text_location_permission">We need location permission to show restaurants nearby you</string>
     <string name="ok">Ok</string>
-    <string name="forgot">Forgot password?</string>
 
 
     <string name="action_sign_in_short">Register</string>
@@ -35,10 +27,6 @@
     <string name="register_or_login">Looks like you haven\'t registered or logged in yet.</string>
     <string name="weclome">Welcome to</string>
     <string name="why_login_or_register">Inorder to use this app, you need to login or register first.</string>
-    <string name="bank">Banks</string>
-    <string name="tourismPlaces">Tourism Places</string>
-    <string name="health">Health</string>
-    <string name="foodnDrink">Food &amp; Drink</string>
     <string name="location">Location</string>
     <string name="about_us">Edit here.......</string>
 
