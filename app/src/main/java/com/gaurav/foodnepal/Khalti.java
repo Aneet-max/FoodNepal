@@ -13,7 +13,6 @@ import java.util.HashMap;
 import khalti.checkOut.api.Config;
 import khalti.checkOut.api.OnCheckOutListener;
 import khalti.checkOut.helper.KhaltiCheckOut;
-import khalti.widget.KhaltiButton;
 
 public class Khalti extends AppCompatActivity {
 
@@ -32,14 +31,13 @@ public class Khalti extends AppCompatActivity {
         contributeET = findViewById(R.id.contributeET);
 
 
-
         khaltiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
                 amount = Long.parseLong(contributeET.getText().toString());
-                if(amount >=10) {
+                if (amount >= 10) {
                     amount *= 100;
 
                     Config config = new Config(khaltiAPI, "Product ID", "Product Name", "Product Url", amount, new OnCheckOutListener() {
@@ -58,7 +56,7 @@ public class Khalti extends AppCompatActivity {
                     KhaltiCheckOut khaltiCheckOut = new KhaltiCheckOut(Khalti.this, config);
 
                     khaltiCheckOut.show();
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Minimum contribution is Rs 10.", Toast.LENGTH_LONG).show();
                 }
 

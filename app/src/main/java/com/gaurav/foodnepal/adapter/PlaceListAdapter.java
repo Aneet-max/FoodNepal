@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,7 @@ import java.util.List;
 
 public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.PlaceListViewHolder> {
 
+    Double distance = 0.0;
     private List<Places> placeList;
     private Context context;
     private String key = "AIzaSyBXK6vd1O5hLkN5ZQtZCZbj8t6O9-CBriM";
@@ -35,7 +35,6 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.Plac
     private double lng;
     private String baseUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=";
     private GeoDataClient mGeoDataClient;
-    Double distance = 0.0;
 
 
     public PlaceListAdapter(Context context, List<Places> placeList, String lat, String lng, GeoDataClient mGeoDataClient) {

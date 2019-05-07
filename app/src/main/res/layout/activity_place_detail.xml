@@ -211,9 +211,9 @@
                         android:fontFamily="sans-serif-light"
                         android:padding="15dp"
                         android:text="@string/description_title"
-                        android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="@color/material_grey_800" />
+                        android:textColor="@color/material_grey_800"
+                        android:textStyle="bold" />
 
                     <View
                         android:layout_width="match_parent"
@@ -250,18 +250,17 @@
                 android:layout_marginRight="@dimen/padding_right"
                 android:layout_marginBottom="@dimen/padding_bottom">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/text_top_padding"
-                android:layout_marginBottom="@dimen/text_bottom_padding"
-                android:paddingLeft="@dimen/padding_left"
-                android:text="@string/location"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-light"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/material_grey_800" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_top_padding"
+                    android:layout_marginBottom="@dimen/text_bottom_padding"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="@dimen/padding_left"
+                    android:text="@string/location"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/material_grey_800"
+                    android:textStyle="bold" />
 
 
                 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
