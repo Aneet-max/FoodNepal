@@ -29,7 +29,16 @@
     <string name="weclome">Welcome to</string>
     <string name="why_login_or_register">Inorder to use this app, you need to login or register first.</string>
     <string name="location">Location</string>
-    <string name="about_us">Edit here.......</string>
+    <string name="about_us">Food and internet have been the most 
+important aspects lately, while merging these two basic fundamentals what we can
+ expect is a review application that allows us to know if a restaurant offers proper
+ food or not which is based on the review of fellow food enthusiasts and application users.
+ Food Nepal will help to avoid the situations where our expectations for a restaurant is hoping 
+its nice but turns out exactly opposite. When a nearby restaurant is shown, users can also see 
+some details regarding the restaurant along with the name and exact location.
+we would like to hear every good and bad comments,please feel free to contact us. 
+submit your queries through the feedback submission page.\n\n
+Food Nepal@2019</string>
 
 
 </resources>
