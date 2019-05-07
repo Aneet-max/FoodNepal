@@ -16,6 +16,7 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_login">LOGIN</string>
+    <string name="description_title">Description</string>
     <string name="btn_link_to_register">Not a member? Get registered now!</string>
     <string name="btn_link_to_login">Already registered. Login Me!</string>
     <string name="btn_forgot_password">Forgot your password?</string>
@@ -29,8 +30,6 @@
     <string name="why_login_or_register">Inorder to use this app, you need to login or register first.</string>
     <string name="location">Location</string>
     <string name="about_us">Edit here.......</string>
-
-    <string name="sainoDec">Wifi availability : Yes\nParking: Yes\nPayment method: Cash\n </string>
 
 
 </resources>

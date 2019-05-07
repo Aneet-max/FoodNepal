@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gaurav.foodnepal.adapter.ReviewAdapter;
+import com.gaurav.foodnepal.model.Restaurant;
 import com.gaurav.foodnepal.model.UserReview;
 import com.gaurav.foodnepal.utility.Utility;
 import com.google.android.gms.location.places.GeoDataClient;
@@ -47,26 +49,28 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback {
 
     DatabaseReference databaseReference;
+    DatabaseReference restaurantDB;
     private GoogleMap mMap;
     private Intent intent;
     private String placeName, placeId;
     private ImageView coverImageView;
     private GeoDataClient mGeoDataClient;
-    private TextView titleTV;
     private FloatingActionButton directionFAB;
-    private double latitude, longitude;
+    private double lat, lng;
+    private double longitude, latitude;
     private Context context;
     private RatingBar ratingBarUserReview;
     private ListView userReviewList;
     private List<UserReview> reviewList;
-    private String sainoId = "ChIJgcuyvcyVlTkRh-YdJzZktjY";
-    private TextView placePhone, placeTime, placeDes;
+    private List<Restaurant> restaurantList;
+    private TextView placeNameTV, placeLocationTV, placeDesTV, phoneTV, websiteTV, distanceTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,46 +81,44 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         mGeoDataClient = com.google.android.gms.location.places.Places.getGeoDataClient(this, null);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("reviews");
+        restaurantDB = FirebaseDatabase.getInstance().getReference("restaurant");
 
         // to push layout up
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         userReviewList = findViewById(R.id.userReviewListView);
-
-        placePhone = findViewById(R.id.placePhone);
-        placeDes = findViewById(R.id.placeDes);
-        placeTime = findViewById(R.id.placeTime);
+        placeNameTV = findViewById(R.id.toolbar_title);
+        placeLocationTV = findViewById(R.id.address);
+        placeDesTV = findViewById(R.id.description);
+        phoneTV = findViewById(R.id.phone);
+        websiteTV = findViewById(R.id.website);
+        distanceTV = findViewById(R.id.distance);
+        ratingBarUserReview = findViewById(R.id.ratingBarUserReview);
+        coverImageView = findViewById(R.id.coverImageView);
 
 
         reviewList = new ArrayList<>();
+        restaurantList = new ArrayList<>();
 
+        context = getApplicationContext();
         Utility.hideKeyboardFrom(getApplicationContext(), getWindow().getDecorView().findViewById(android.R.id.content));
 
 
         placeName = intent.getStringExtra("selected");
         placeId = intent.getStringExtra("placeId");
+        lat = intent.getDoubleExtra("lat", 0.0);
+        lng = intent.getDoubleExtra("lng", 0.0);
+        latitude = intent.getDoubleExtra("latitude", 0.0);
+        longitude = intent.getDoubleExtra("longitude", 0.0);
 
-        context = getApplicationContext();
+        Double distance = Utility.distance(lat, lng, latitude, longitude);
+        distanceTV.setText(new DecimalFormat("##.##").format(distance) + " km");
 
-        latitude = intent.getDoubleExtra("lat", 0.0);
-        longitude = intent.getDoubleExtra("lng", 0.0);
+        placeNameTV.setText(placeName);
 
-        titleTV = findViewById(R.id.placeTitle);
+
         directionFAB = findViewById(R.id.fabDirection);
         directionFAB.setVisibility(View.VISIBLE);
-
-        ratingBarUserReview = findViewById(R.id.ratingBarUserReview);
-
-        titleTV.setText(placeName);
-
-        coverImageView = findViewById(R.id.coverImageView);
-
-
-        if (placeId.equals(sainoId)) {
-            placePhone.setVisibility(View.VISIBLE);
-            placeTime.setVisibility(View.VISIBLE);
-            placeDes.setVisibility(View.VISIBLE);
-        }
 
 
         /**
@@ -163,13 +165,25 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar4));
 
-        getSupportActionBar().
-
-                setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(placeName);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
+
+        phoneTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeCall();
+            }
+        });
+
+        websiteTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrl();
+            }
+        });
 
         ratingBarUserReview.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -186,7 +200,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 if (isGoogleMapsInstalled()) {
-                    String uri = "http://maps.google.com/maps?daddr=" + latitude + "," + longitude;
+                    String uri = "http://maps.google.com/maps?daddr=" + lat + "," + lng;
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                     try {
                         startActivity(intent);
@@ -210,6 +224,30 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onStart() {
         super.onStart();
+
+        /**
+         * fetching restaurant details
+         */
+        restaurantDB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(placeId).exists()) {
+                    Restaurant restaurant = dataSnapshot.child(placeId).getValue(Restaurant.class);
+                    restaurantList.add(restaurant);
+
+                    placeLocationTV.setText(restaurantList.get(0).getLocation());
+                    placeDesTV.setText(restaurantList.get(0).getDescription());
+                    phoneTV.setText(restaurantList.get(0).getPhone());
+                    websiteTV.setText(restaurantList.get(0).getWebsite());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -253,7 +291,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng location = new LatLng(latitude, longitude);
+        LatLng location = new LatLng(lat, lng);
         if (!intent.getStringExtra("selected").equals("null")) {
             mMap.addMarker(new MarkerOptions().position(location).title(placeName)).showInfoWindow();
         }
@@ -295,6 +333,16 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
                 finish();
             }
         };
+    }
+
+    public void makeCall() {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + restaurantList.get(0).getPhone()));
+        startActivity(intent);
+    }
+
+    public void openUrl() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(restaurantList.get(0).getWebsite()));
+        startActivity(browserIntent);
     }
 
     @Override

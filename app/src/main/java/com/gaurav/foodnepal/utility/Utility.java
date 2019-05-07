@@ -71,9 +71,8 @@ public class Utility {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double distance = earthRadius * c;
 
-        int meterConversion = 1000;
 
-        return (distance * meterConversion);
+        return (distance);
     }
 
 

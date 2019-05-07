@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.Plac
     private double lng;
     private String baseUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=";
     private GeoDataClient mGeoDataClient;
+    Double distance = 0.0;
 
 
     public PlaceListAdapter(Context context, List<Places> placeList, String lat, String lng, GeoDataClient mGeoDataClient) {
@@ -98,8 +100,8 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.Plac
         /**
          * Calculating distance in meter using two coordinates and setting it in distance textview
          */
-        Double distance = Utility.distance(lat, lng, places.getLat(), places.getLng());
-        holder.placeDistance.setText(new DecimalFormat("##.##").format(distance) + " m");
+        distance = Utility.distance(lat, lng, places.getLat(), places.getLng());
+        holder.placeDistance.setText(new DecimalFormat("##.##").format(distance) + " km");
 
         /**
          * Setting place name, place rating
@@ -129,5 +131,7 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.Plac
             placeRatingTV = itemView.findViewById(R.id.ratingText);
             placeRating = itemView.findViewById(R.id.rating);
         }
+
+
     }
 }

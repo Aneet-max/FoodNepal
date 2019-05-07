@@ -55,7 +55,6 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/startInfo1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/startInfo"
@@ -66,7 +65,6 @@
             android:textSize="20sp" />
 
         <LinearLayout
-            android:id="@+id/buttonsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

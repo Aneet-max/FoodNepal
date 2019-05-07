@@ -86,8 +86,11 @@ public class PlaceList extends AppCompatActivity {
                 intent = new Intent(PlaceList.this, PlaceDetail.class);
                 intent.putExtra("lat", places.getLat());
                 intent.putExtra("lng", places.getLng());
+                intent.putExtra("latitude", Double.parseDouble(latitude));
+                intent.putExtra("longitude", Double.parseDouble(longitude));
                 intent.putExtra("selected", places.getName());
                 intent.putExtra("placeId", places.getPlaceId());
+
                 startActivity(intent);
             }
 
