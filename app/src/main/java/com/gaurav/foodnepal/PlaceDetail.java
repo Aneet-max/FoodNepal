@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -56,6 +57,8 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
 
     DatabaseReference databaseReference;
     DatabaseReference restaurantDB;
+    SharedPreferences.Editor editor;
+    SharedPreferences pref;
     private GoogleMap mMap;
     private Intent intent;
     private String placeName, placeId;
@@ -76,6 +79,9 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_detail);
         intent = getIntent();
+
+        editor = getSharedPreferences("SCTPref", MODE_PRIVATE).edit();
+        pref = getSharedPreferences("SCTPref", MODE_PRIVATE);
 
         mGeoDataClient = com.google.android.gms.location.places.Places.getGeoDataClient(this, null);
 
@@ -261,7 +267,7 @@ public class PlaceDetail extends AppCompatActivity implements OnMapReadyCallback
                     }
 
                     ReviewAdapter reviewAdapter = new ReviewAdapter(PlaceDetail.this, reviewList,
-                            databaseReference, placeId);
+                            databaseReference, placeId, editor, pref);
                     userReviewList.setAdapter(reviewAdapter);
                 }
             }

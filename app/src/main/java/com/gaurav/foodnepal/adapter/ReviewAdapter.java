@@ -1,9 +1,9 @@
 package com.gaurav.foodnepal.adapter;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gaurav.foodnepal.R;
 import com.gaurav.foodnepal.model.UserReview;
@@ -23,14 +24,18 @@ public class ReviewAdapter extends ArrayAdapter<UserReview> {
     private List<UserReview> userReviewList;
     private DatabaseReference databaseReference;
     private String placeId;
+    private SharedPreferences.Editor editor;
+    private SharedPreferences pref;
 
     public ReviewAdapter(Activity context, List<UserReview> userReviewList,
-                         DatabaseReference databaseReference, String placeId) {
+                         DatabaseReference databaseReference, String placeId, SharedPreferences.Editor editor, SharedPreferences pref) {
         super(context, R.layout.review_list, userReviewList);
         this.context = context;
         this.userReviewList = userReviewList;
         this.databaseReference = databaseReference;
         this.placeId = placeId;
+        this.editor = editor;
+        this.pref = pref;
 
     }
 
@@ -76,11 +81,19 @@ public class ReviewAdapter extends ArrayAdapter<UserReview> {
         upvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("TAG", "onClick: upvote clicked....");
-                int vote = userReview.getVote();
-                vote += 1;
 
-                databaseReference.child(placeId).child(userReview.getId()).child("vote").setValue(vote);
+                boolean isUpvoted = pref.getBoolean("upvoted", false);
+                if (isUpvoted) {
+                    Toast.makeText(context, "You have already upvoted", Toast.LENGTH_SHORT).show();
+                } else {
+                    editor.putBoolean("upvoted", true);
+                    editor.putBoolean("downvoted", false);
+                    editor.apply();
+                    int vote = userReview.getVote();
+                    vote += 1;
+
+                    databaseReference.child(placeId).child(userReview.getId()).child("vote").setValue(vote);
+                }
 
 
             }
@@ -88,12 +101,18 @@ public class ReviewAdapter extends ArrayAdapter<UserReview> {
         downvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("TAG", "onClick: downvote clicked....");
-                int vote = userReview.getVote();
-                vote -= 1;
+                boolean isDownvoted = pref.getBoolean("downvoted", false);
+                if (isDownvoted) {
+                    Toast.makeText(context, "You have already down voted", Toast.LENGTH_SHORT).show();
+                } else {
+                    editor.putBoolean("downvoted", true);
+                    editor.putBoolean("upvoted", false);
+                    editor.apply();
+                    int vote = userReview.getVote();
+                    vote -= 1;
 
-                databaseReference.child(placeId).child(userReview.getId()).child("vote").setValue(vote);
-
+                    databaseReference.child(placeId).child(userReview.getId()).child("vote").setValue(vote);
+                }
 
             }
         });
