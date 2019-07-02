@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:582199461334:android:8f62859e27220870",
         "android_client_info": {
-          "package_name": "com.gaurav.foodnepal"
+          "package_name": "com.aneet.foodnepal"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "582199461334-f2b29348tf4tjreue4hte3famb714a3g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.gaurav.foodnepal",
+            "package_name": "com.aneet.foodnepal",
             "certificate_hash": "3393ff395e933a325ea0245047246ae45be82d84"
           }
         },
@@ -26,7 +26,7 @@
           "client_id": "582199461334-epldijum6vlsg9ns5pi0cimr38l6n16h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.gaurav.foodnepal",
+            "package_name": "com.aneet.foodnepal",
             "certificate_hash": "21707d465d4a3b7314cca7e82525ab10477c8151"
           }
         },
